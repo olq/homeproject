@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MusicReferencerModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="MusicReferencerEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Album" EntityType="MusicReferencerModel.Album" />
+    <EntitySet Name="AlbumRate" EntityType="MusicReferencerModel.AlbumRate" />
+    <EntitySet Name="Profile" EntityType="MusicReferencerModel.Profile" />
+    <EntitySet Name="Review" EntityType="MusicReferencerModel.Review" />
+    <EntitySet Name="ReviewRate" EntityType="MusicReferencerModel.ReviewRate" />
+    <AssociationSet Name="FK_AlbumRate_Album" Association="MusicReferencerModel.FK_AlbumRate_Album">
+      <End Role="Album" EntitySet="Album" />
+      <End Role="AlbumRate" EntitySet="AlbumRate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Review_Profile" Association="MusicReferencerModel.FK_Review_Profile">
+      <End Role="Album" EntitySet="Album" />
+      <End Role="Review" EntitySet="Review" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReviewRate_Review" Association="MusicReferencerModel.FK_ReviewRate_Review">
+      <End Role="Review" EntitySet="Review" />
+      <End Role="ReviewRate" EntitySet="ReviewRate" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Album">
+    <Key>
+      <PropertyRef Name="AlbumId" />
+    </Key>
+    <Property Name="AlbumName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="AlbumId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AlbumRate" Relationship="MusicReferencerModel.FK_AlbumRate_Album" FromRole="Album" ToRole="AlbumRate" />
+    <NavigationProperty Name="Review" Relationship="MusicReferencerModel.FK_Review_Profile" FromRole="Album" ToRole="Review" />
+  </EntityType>
+  <EntityType Name="AlbumRate">
+    <Key>
+      <PropertyRef Name="Rate" />
+      <PropertyRef Name="AlbumId" />
+    </Key>
+    <Property Name="Rate" Type="Decimal" Nullable="false" Precision="2" Scale="0" />
+    <Property Name="AlbumId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Album" Relationship="MusicReferencerModel.FK_AlbumRate_Album" FromRole="AlbumRate" ToRole="Album" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="ProfileID" />
+    </Key>
+    <Property Name="ProfileID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="ReviewId" />
+    </Key>
+    <Property Name="ReviewId" Type="Int32" Nullable="false" />
+    <Property Name="ReviewName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="AlbumId" Type="Int32" Nullable="false" />
+    <Property Name="ProfileId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Album" Relationship="MusicReferencerModel.FK_Review_Profile" FromRole="Review" ToRole="Album" />
+    <NavigationProperty Name="ReviewRate" Relationship="MusicReferencerModel.FK_ReviewRate_Review" FromRole="Review" ToRole="ReviewRate" />
+  </EntityType>
+  <EntityType Name="ReviewRate">
+    <Key>
+      <PropertyRef Name="Rate" />
+      <PropertyRef Name="ReviewId" />
+    </Key>
+    <Property Name="Rate" Type="Decimal" Nullable="false" Precision="2" Scale="0" />
+    <Property Name="ReviewId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Review" Relationship="MusicReferencerModel.FK_ReviewRate_Review" FromRole="ReviewRate" ToRole="Review" />
+  </EntityType>
+  <Association Name="FK_AlbumRate_Album">
+    <End Role="Album" Type="MusicReferencerModel.Album" Multiplicity="1" />
+    <End Role="AlbumRate" Type="MusicReferencerModel.AlbumRate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Album">
+        <PropertyRef Name="AlbumId" />
+      </Principal>
+      <Dependent Role="AlbumRate">
+        <PropertyRef Name="AlbumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Review_Profile">
+    <End Role="Album" Type="MusicReferencerModel.Album" Multiplicity="1" />
+    <End Role="Review" Type="MusicReferencerModel.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Album">
+        <PropertyRef Name="AlbumId" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="AlbumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReviewRate_Review">
+    <End Role="Review" Type="MusicReferencerModel.Review" Multiplicity="1" />
+    <End Role="ReviewRate" Type="MusicReferencerModel.ReviewRate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Review">
+        <PropertyRef Name="ReviewId" />
+      </Principal>
+      <Dependent Role="ReviewRate">
+        <PropertyRef Name="ReviewId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

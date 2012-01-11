@@ -1,0 +1,7 @@
+C:\projekt\MusicReferencer\MusicReferencer\bin\MusicReferencer.dll
+C:\projekt\MusicReferencer\MusicReferencer\bin\MusicReferencer.pdb
+C:\projekt\MusicReferencer\MusicReferencer\bin\EntityFramework.dll
+C:\projekt\MusicReferencer\MusicReferencer\bin\EntityFramework.xml
+C:\projekt\MusicReferencer\MusicReferencer\obj\Debug\ResolveAssemblyReference.cache
+C:\projekt\MusicReferencer\MusicReferencer\obj\Debug\MusicReferencer.dll
+C:\projekt\MusicReferencer\MusicReferencer\obj\Debug\MusicReferencer.pdb
