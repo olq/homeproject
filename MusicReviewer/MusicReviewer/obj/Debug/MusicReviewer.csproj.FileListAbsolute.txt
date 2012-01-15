@@ -1,0 +1,7 @@
+C:\projekt\MusicReviewer\MusicReviewer\bin\MusicReviewer.dll
+C:\projekt\MusicReviewer\MusicReviewer\bin\MusicReviewer.pdb
+C:\projekt\MusicReviewer\MusicReviewer\bin\EntityFramework.dll
+C:\projekt\MusicReviewer\MusicReviewer\bin\EntityFramework.xml
+C:\projekt\MusicReviewer\MusicReviewer\obj\Debug\ResolveAssemblyReference.cache
+C:\projekt\MusicReviewer\MusicReviewer\obj\Debug\MusicReviewer.dll
+C:\projekt\MusicReviewer\MusicReviewer\obj\Debug\MusicReviewer.pdb

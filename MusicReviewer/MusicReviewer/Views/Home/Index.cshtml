@@ -1,0 +1,17 @@
+﻿@model IEnumerable<MusicReviewer.Models.Review>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+@foreach (var Item in Model)
+{
+    <div id="ReviewBox">
+        <div id="Names">
+        <h2>@Item.Profile.Name</h2>
+            @Item.Album.AlbumName @Item.Album.Band (@Item.Name)
+        </div>
+    </div>
+}
