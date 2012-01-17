@@ -27,14 +27,18 @@ namespace MusicReviewer
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-            );
 
+            );
+            routes.MapRoute("GetImage", "home/GetImage/[CoverId]",
+            new { Controller = "Home", action = "GetImage", CoverId = "" }
+            );
+            routes.MapRoute("AddReview", "AddNewReview/{AlbumId}", new { controller = "Review", action = "AddNewReview", Albumid = UrlParameter.Optional });
         }
 
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            Database.SetInitializer<ReviewerContext>(null);
+            //Database.SetInitializer<ReviewerContext>(null);
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
         }

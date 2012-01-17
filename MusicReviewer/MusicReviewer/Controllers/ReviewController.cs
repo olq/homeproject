@@ -13,9 +13,28 @@ namespace MusicReviewer.Controllers
         {
             using(var db = new ReviewerContext())
             {
-                return View(db.Reviews.ToList());
+                return View(db.Review.ToList());
             }
 
+        }
+        public ActionResult AddNewReview(string AlbumId)
+
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddNewReview(Review review)
+        {
+            if (review.ProfileId == 0)
+            {
+                review.ProfileId = 1;
+            }
+            var db = new ReviewerContext();
+            db.Review.Add(review);
+            db.SaveChanges();
+
+
+            return View();
         }
     }
 }

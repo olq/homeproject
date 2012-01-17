@@ -7,7 +7,9 @@
 <h2>ShowAlbums</h2>
 @foreach (var item in Model)
 {
-    <strong>@item.Band : @item.AlbumName</strong>
+    <strong>@item.Band: @item.AlbumName</strong>
+
+    <div>@Html.ActionLink("Add review to this album", "AddNewReview", "Review", new {AlbumId = item.Id}, null )</div>
     <div class = "image">
        <img alt="No image" src="@Url.Action("GetImage", "Home", new { @CoverId  = item.CoverId})" />
     </div>

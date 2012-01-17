@@ -12,6 +12,8 @@ namespace MusicReviewer.Models
         public string AlbumName { get; set; }
         public string Band { get; set; }
         public ICollection<Song> Songs { get; set; }
+        public int CoverId { get; set; }
+        public  Cover Cover { get; set; }
  
     }
     
@@ -30,6 +32,7 @@ namespace MusicReviewer.Models
         public string Name { get; set; }
         public decimal AlbumRate { get; set; }
         public decimal ReviewRate { get; set; }
+        public string ReviewNote { get; set; }
         public int AlbumId { get; set; }
         public virtual Album Album { get; set; }
         public int ProfileId { get; set; }
@@ -42,6 +45,12 @@ namespace MusicReviewer.Models
         public int AlbumId { get; set; }
         public string Title { get; set; }
     }
+    public class Cover
+    {
 
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public byte[] Image { get; set; }
+    }
 
 }
