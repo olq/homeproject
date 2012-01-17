@@ -1,0 +1,15 @@
+﻿@model IEnumerable<MusicReviewer.Models.Album>
+
+@{
+    ViewBag.Title = "ShowAlbums";
+}
+
+<h2>ShowAlbums</h2>
+@foreach (var item in Model)
+{
+    <strong>@item.Band : @item.AlbumName</strong>
+    <div class = "image">
+       <img alt="No image" src="@Url.Action("GetImage", "Home", new { @CoverId  = item.CoverId})" />
+    </div>
+    
+}
